@@ -181,6 +181,32 @@
 }
 
 @layer layout {
+  /* Select every child except then first one */
+  .flow * + * {
+    margin-top: var(--flow-space, 1em);
+  }
+  .grid-flow {
+    display: grid;
+    gap: var(--grid-flow-gap, 1rem);
+  }
+  .equal-columns {
+    display: grid;
+    gap: var(--equal-columns-gap, 1rem);
+    align-items: var(--equal-columns-vertical-alignment, stretch);
+
+    @media (width > 700px) {
+      grid-auto-flow: column;
+
+      grid-auto-columns: 1fr;
+    }
+
+    &[data-gap="large"] {
+      --equal-columns-gap: 2rem;
+    }
+    &[data-alignment="centered"] {
+      --equal-columns-vertical-alignment: center;
+    }
+  }
   .section {
     --padding: 3.75rem;
     padding-block: var(--padding);
@@ -211,6 +237,25 @@
   .wrapper--narrow{} */
   /* .wrapper[data-width="wide"] {
   } */
+}
+
+@layer components {
+  .site-header {
+    padding-block: 1rem;
+  }
+  .site-header__inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+  }
+  .primary-navigation {
+    ul {
+      display: flex;
+      gap: 0.5rem 1rem;
+      flex-wrap: wrap;
+    }
+  }
 }
 
 @layer utilities {
