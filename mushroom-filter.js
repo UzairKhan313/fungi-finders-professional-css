@@ -12,7 +12,8 @@ const currentFilters = {
 };
 
 cards.forEach((card, index) => {
-  // You can use a data attribute if cards have unique IDs
+  // You can use a data attribute if cards have unique IDs.
+  // Assingning unique IDs to the card for animaitons. to uniquely idenfied by the browsers.
   const mushroomId = `mushroom-${index + 1}`;
   card.style.viewTransitionName = `mushroom-card-${mushroomId}`;
 });
@@ -29,6 +30,8 @@ function updateFilter(e) {
     filterCards();
     return;
   }
+
+  // Bydefault transition with JS. ===> fade in <====
   document.startViewTransition(() => filterCards());
 }
 
